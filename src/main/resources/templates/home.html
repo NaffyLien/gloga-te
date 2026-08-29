@@ -2,18 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${titre}">Titre par défaut</title>
+    <title th:text="${titre}">Accueil</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1 th:text="${titre}">Titre</h1>
-<p th:text="${message}">Message par défaut</p>
 
-<nav>
-    <a th:href="@{/}">Accueil</a> |
-    <a th:href="@{/apropos}">À propos</a> |
-    <a th:href="@{/produits}">Produits</a> |
-    <a th:href="@{/danseurs}">Danseurs</a>
-</nav>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<main>
+    <h2 th:text="${titre}">Titre</h2>
+    <p th:text="${message}">Message</p>
+</main>
+
 </body>
 </html>
