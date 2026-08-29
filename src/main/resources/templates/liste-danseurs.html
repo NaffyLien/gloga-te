@@ -12,11 +12,18 @@
         <th>Nom</th>
         <th>Email</th>
         <th>Âge</th>
+        <th>Actions</th>
     </tr>
     <tr th:each="e : ${danseurs}">
         <td th:text="${e.nom}"></td>
         <td th:text="${e.email}"></td>
         <td th:text="${e.age}"></td>
+        <td>
+            <a th:href="@{/danseurs/modifier/{id}(id=${e.id})}">Modifier</a>
+            |
+            <a th:href="@{/danseurs/supprimer/{id}(id=${e.id})}"
+               onclick="return confirm('Supprimer ce danseur ?');">Supprimer</a>
+        </td>
     </tr>
 </table>
 

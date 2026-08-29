@@ -2,15 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un danseur</title>
+    <title>Formulaire danseur</title>
     <style>
         .erreur { color: red; font-size: 0.9em; }
     </style>
 </head>
 <body>
-<h1>Ajouter un danseur</h1>
+<h1 th:text="${modeModification} ? 'Modifier un danseur' : 'Ajouter un danseur'">Formulaire</h1>
 
-<form th:action="@{/danseurs/ajouter}" th:object="${danseur}" method="post">
+<form th:action="${modeModification} ? @{/danseurs/modifier/{id}(id=${danseur.id})} : @{/danseurs/ajouter}"
+      th:object="${danseur}"
+      method="post">
 
     <label>Nom :</label>
     <input type="text" th:field="*{nom}" required /><br>
@@ -27,7 +29,7 @@
     <span class="erreur" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
     <br>
 
-    <button type="submit">Valider</button>
+    <button type="submit" th:text="${modeModification} ? 'Mettre à jour' : 'Valider'">Valider</button>
 </form>
 
 <a th:href="@{/danseurs}">Voir la liste des danseurs</a>
