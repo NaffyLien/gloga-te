@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titre}">Titre par défaut</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 th:text="${titre}">Titre</h1>
+<p th:text="${message}">Message par défaut</p>
+
+<nav>
+    <a th:href="@{/}">Accueil</a> |
+    <a th:href="@{/apropos}">À propos</a> |
+    <a th:href="@{/produits}">Produits</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titre}">Titre par defaut</title>
+</head>
+<body>
+<h1 th:text="${titre}">Titre</h1>
+<p th:text="${message}">Message par défaut</p>
+
+<ul>
+    <li th:each="produit : ${produits}" th:text="${produit}"></li>
+</ul>
+</body>
+</html>
