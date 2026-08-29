@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un danseur</title>
+    <style>
+        .erreur { color: red; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+<h1>Ajouter un danseur</h1>
+
+<form th:action="@{/danseurs/ajouter}" th:object="${danseur}" method="post">
+
+    <label>Nom :</label>
+    <input type="text" th:field="*{nom}" required /><br>
+    <span class="erreur" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+    <br>
+
+    <label>Email :</label>
+    <input type="email" th:field="*{email}" required /><br>
+    <span class="erreur" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <br>
+
+    <label>Âge :</label>
+    <input type="number" th:field="*{age}" required min="0"/><br>
+    <span class="erreur" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+    <br>
+
+    <button type="submit">Valider</button>
+</form>
+
+<a th:href="@{/danseurs}">Voir la liste des danseurs</a>
+</body>
+</html>
