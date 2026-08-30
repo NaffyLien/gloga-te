@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des danseurs</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<main>
+    <h2>Liste des danseurs</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Âge</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="e : ${danseurs}">
+            <td th:text="${e.nom}"></td>
+            <td th:text="${e.email}"></td>
+            <td th:text="${e.age}"></td>
+            <td class="actions">
+                <a class="modifier" th:href="@{/danseurs/modifier/{id}(id=${e.id})}">Modifier</a>
+                <a class="supprimer"
+                   th:href="@{/danseurs/supprimer/{id}(id=${e.id})}"
+                   onclick="return confirm('Supprimer cet danseur ?');">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn-lien" th:href="@{/danseurs/ajouter}">+ Ajouter un autre danseur</a>
+</main>
+
+</body>
+</html>
