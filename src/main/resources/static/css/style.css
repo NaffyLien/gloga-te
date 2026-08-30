@@ -48,6 +48,11 @@ main {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+main > *{
+    margin: auto;
+    text-align: center;
+}
+
 h2 {
     margin-bottom: 20px;
     color: #2c3e50;
@@ -88,6 +93,7 @@ input:focus {
 }
 
 button {
+    margin: auto;
     align-self: flex-start;
     padding: 10px 22px;
     background-color: #3498db;
