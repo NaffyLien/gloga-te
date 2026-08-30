@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${modeModification} ? 'Modifier un danseur' : 'Ajouter un danseur'">Formulaire</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<main>
+    <h2 th:text="${modeModification} ? 'Modifier un danseur' : 'Ajouter un danseur'">Formulaire</h2>
+
+<form th:action="${modeModification} ? @{/danseurs/modifier/{id}(id=${danseur.id})} : @{/danseurs/ajouter}"
+      th:object="${danseur}"
+      method="post">
+
+        <div>
+            <label>Nom :</label>
+            <input type="text" th:field="*{nom}" required />
+            <div class="erreur" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></div>
+        </div>
+
+        <div>
+            <label>Email :</label>
+            <input type="email" th:field="*{email}" required />
+            <div class="erreur" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+
+        <div>
+            <label>Âge :</label>
+            <input type="number" th:field="*{age}" required min="0"/>
+            <div class="erreur" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+        </div>
+
+    <button type="submit" th:text="${modeModification} ? 'Mettre à jour' : 'Valider'">Valider</button>
+</form>
+
+    <a class="btn-lien" th:href="@{/danseurs}">← Voir la liste des danseurs</a>
+</main>
+</body>
+</html>
